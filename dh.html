@@ -24,6 +24,19 @@
             margin-top: 1.5rem;
             margin-bottom: 0.5rem;
         }
+        /* 使用更好的方式确保页脚位置 */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .content-wrapper {
+            flex: 1;
+        }
+        /* 确保导航栏高度正常 */
+        .navbar {
+            min-height: auto;
+        }
         /* 链接列表样式 */
         ul.link-list {
             display: flex;
@@ -65,6 +78,7 @@
     </style>
 </head>
 <body>
+    <div class="content-wrapper">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #b81414;">
         <div class="container">
             <a class="navbar-brand" href="/">VR俱乐部</a>
@@ -186,6 +200,7 @@
             <li class="link-item"><a href="https://zhxy.ecust.edu.cn/">Z资源与环境工程学院（资环学院）</a></li>
         </ul>
     </div>
+    </div> <!-- 结束.content-wrapper -->
     <footer>
         <script type="text/javascript">
             var currentYear = new Date().getFullYear();
@@ -216,30 +231,69 @@
         // 添加按A-Z分类的链接
         Object.keys(categories).sort().forEach(category => {
             const categoryItems = categories[category];
+            
+            // 创建分类标题并添加数据属性
             const categoryHeader = document.createElement('h2');
             categoryHeader.textContent = category;
+            categoryHeader.setAttribute('data-category', category);
             linkList.appendChild(categoryHeader);
 
+            // 创建分类列表并添加相同的数据属性
             const categoryList = document.createElement('ul');
             categoryList.classList.add('link-list');
+            categoryList.setAttribute('data-category', category);
+            
             categoryItems.forEach(item => {
+                // 为每个链接项目也添加分类属性
+                item.setAttribute('data-category', category);
                 categoryList.appendChild(item);
             });
 
             linkList.appendChild(categoryList);
         });
 
-        // 简单搜索功能
+        // 增强的搜索功能
         const searchBar = document.getElementById('search-bar');
 
         searchBar.addEventListener('input', () => {
             const searchTerm = searchBar.value.trim().toLowerCase();
+            
+            // 创建一个集合来跟踪有匹配项的分类
+            const categoriesWithMatches = new Set();
+            
+            // 遍历所有链接项目，设置显示或隐藏
             linkItems.forEach(item => {
                 const linkText = item.querySelector('a').textContent.toLowerCase();
+                const category = item.getAttribute('data-category');
+                
                 if (linkText.includes(searchTerm)) {
                     item.style.display = 'block';
+                    categoriesWithMatches.add(category);
                 } else {
                     item.style.display = 'none';
+                }
+            });
+            
+            // 获取所有分类标题和分类列表
+            const categoryHeaders = document.querySelectorAll('h2[data-category]');
+            const categoryLists = document.querySelectorAll('ul.link-list[data-category]');
+            
+            // 根据是否有匹配项来显示或隐藏分类
+            categoryHeaders.forEach(header => {
+                const category = header.getAttribute('data-category');
+                if (searchTerm === '' || categoriesWithMatches.has(category)) {
+                    header.style.display = 'block';
+                } else {
+                    header.style.display = 'none';
+                }
+            });
+            
+            categoryLists.forEach(list => {
+                const category = list.getAttribute('data-category');
+                if (searchTerm === '' || categoriesWithMatches.has(category)) {
+                    list.style.display = 'flex';
+                } else {
+                    list.style.display = 'none';
                 }
             });
         });
