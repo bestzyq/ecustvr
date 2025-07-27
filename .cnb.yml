@@ -19,12 +19,12 @@ master:
             auth_type: https
             username: ${GITEE_USERNAME}
             password: ${GITEE_ACCESS_TOKEN}
-    - name: edgeone
-      runner:
-        cpus: 2
-      imports: https://cnb.cool/ecustvr/key/-/blob/main/env.yml
-      stages:
-        # 将构建输出部署到 EdgeOne Pages
-        - name: Deploy to EdgeOne Pages
-          image: node:20
-          script: npx edgeone pages deploy ./ -n ecustvr -t $EDGEONE_API_TOKEN
+    # - name: edgeone
+    #   runner:
+    #     cpus: 2
+    #   imports: https://cnb.cool/ecustvr/key/-/blob/main/env.yml
+    #   stages:
+    #     # 将构建输出部署到 EdgeOne Pages
+    #     - name: Deploy to EdgeOne Pages
+    #       image: node:20
+    #       script: npx edgeone pages deploy ./ -n ecustvr -t $EDGEONE_API_TOKEN
