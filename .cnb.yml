@@ -22,11 +22,7 @@ master:
     - name: edgeone
       imports: https://cnb.cool/ecustvr/key/-/blob/main/env.yml
       stages:
-        # 构建当前项目
-        - name: Build Current Project
-          image: node:20
-          script: node -v && npm install && npm run build
         # 将构建输出部署到 EdgeOne Pages
         - name: Deploy to EdgeOne Pages
           image: node:20
-          script: npx edgeone pages deploy ./dist -n ecustvr -t $EDGEONE_API_TOKEN
+          script: npx edgeone pages deploy ./ -n ecustvr -t $EDGEONE_API_TOKEN
