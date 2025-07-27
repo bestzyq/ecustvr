@@ -20,6 +20,8 @@ master:
             username: ${GITEE_USERNAME}
             password: ${GITEE_ACCESS_TOKEN}
     - name: edgeone
+      runner:
+        cpus: 2
       imports: https://cnb.cool/ecustvr/key/-/blob/main/env.yml
       stages:
         # 将构建输出部署到 EdgeOne Pages
