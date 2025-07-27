@@ -177,6 +177,7 @@
       }
 
       .group-desc {
+        word-break: break-all;
         font-size: 0.9rem;
         color: #7f8c8d;
         margin-bottom: 10px;
@@ -716,7 +717,7 @@
                   
                   if (countText) {
                     // 尝试解析格式如 "1773 / 2000" 的字符串
-                    const countMatch = countText.match(/(\d+)\s*\/\s*(\d+)/);
+                    const countMatch = countText.match(/\s*(\d+)\s*\/\s*(\d+)\s*/);
                     if (countMatch) {
                       memberCount = parseInt(countMatch[1], 10);
                       maxMemberCount = parseInt(countMatch[2], 10);
