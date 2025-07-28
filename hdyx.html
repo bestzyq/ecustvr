@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动影像 - VR俱乐部</title>
+    <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .content {
+            flex: 1;
+            padding-bottom: 60px; /* 为页脚腾出空间 */
+        }
+
+        footer {
+            background-color: #b81414;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .logo-img {
+            max-width: 120px; /* 放大logo图片 */
+            height: auto;
+            vertical-align: middle; /* 垂直居中对齐，使图片与文字对齐 */
+            margin-right: 8px; /* 增加图片和文字之间的间距 */
+        }
+
+        .file-card {
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .file-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .file-type-icon {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #b81414;">
+        <div class="container">
+            <a class="navbar-brand" href="/">VR俱乐部</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">社团简介</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="history.html">发展历程</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cgzs.html">成果展示</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="hdyx.html">活动影像</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzIzMDU3NzQ1MQ==&scene=1&album_id=2927847544494440450&count=3#wechat_redirect">使用攻略</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dh.html">网址导航</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="qq-groups.html">交流群汇总</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://wiki.ecustvr.top/">Wiki</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://git.ecustvr.top/">Git</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content container py-5">
+        <h2 class="text-center mb-4">活动影像</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-info" role="alert">
+                    正在加载活动影像，请稍候...
+                </div>
+                <div id="file-container" class="row row-cols-1 row-cols-md-3 g-4">
+                    <!-- 文件将通过API动态加载 -->
+                </div>
+                <nav aria-label="文件导航">
+                    <ul id="pagination" class="pagination justify-content-center mt-4">
+                        <!-- 分页将通过API动态加载 -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <script type="text/javascript">
+            var currentYear = new Date().getFullYear();
+            var hostname = window.location.hostname;
+            var footerContent = '&copy; ' + currentYear + ' VR俱乐部 ';
+            
+            // 只在www.ecustvr.top域名下显示备案号以及赞助信息
+            if (hostname === 'www.ecustvr.top') {
+                footerContent += '<a class="nav-link" href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2023000758号-2</a> <a class="nav-link" target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31012102000135" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://beian.mps.gov.cn/img/ghs.png" style="float:left;"/>沪公网安备31012102000135号</p></a>';
+                footerContent += '<a class="nav-link" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">本网站由<img src="/img/upyun.png" alt="又拍云" class="logo-img img-fluid">提供CDN加速/云储存服务</a>';
+            }
+            
+            document.write(footerContent);
+        </script>
+    </footer>
+
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+    <script>
+        // Alist API配置
+        const alistConfig = {
+            baseUrl: 'https://ss.bestzyq.cn', // 替换为你的Alist服务器地址
+            path: '/VR',                    // 替换为你的活动影像文件夹路径
+            password: '',                        // 如果需要密码，请在这里填写
+            perPage: 12                          // 每页显示的文件数量
+        };
+
+        // 当前页码
+        let currentPage = 1;
+
+        // 文件图标映射
+        const fileIcons = {
+            'image': 'bi bi-file-image',
+            'video': 'bi bi-file-play',
+            'audio': 'bi bi-file-music',
+            'pdf': 'bi bi-file-pdf',
+            'word': 'bi bi-file-word',
+            'excel': 'bi bi-file-excel',
+            'powerpoint': 'bi bi-file-ppt',
+            'archive': 'bi bi-file-zip',
+            'folder': 'bi bi-folder',
+            'default': 'bi bi-file'
+        };
+
+        // 获取文件类型图标
+        function getFileIcon(file) {
+            if (file.type === 1) return fileIcons.folder;
+            
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) return fileIcons.image;
+            if (['mp4', 'webm', 'mkv', 'avi', 'mov'].includes(ext)) return fileIcons.video;
+            if (['mp3', 'wav', 'ogg', 'flac'].includes(ext)) return fileIcons.audio;
+            if (ext === 'pdf') return fileIcons.pdf;
+            if (['doc', 'docx'].includes(ext)) return fileIcons.word;
+            if (['xls', 'xlsx'].includes(ext)) return fileIcons.excel;
+            if (['ppt', 'pptx'].includes(ext)) return fileIcons.powerpoint;
+            if (['zip', 'rar', '7z', 'tar', 'gz'].includes(ext)) return fileIcons.archive;
+            
+            return fileIcons.default;
+        }
+
+        // 格式化文件大小
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // 格式化日期
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleString('zh-CN');
+        }
+
+        // 获取文件预览URL
+        function getPreviewUrl(file) {
+            return `${alistConfig.baseUrl}/d/Public${alistConfig.path}/${file.name}`;
+        }
+
+        // 获取文件缩略图URL和类型
+        function getThumbnailInfo(file) {
+            if (file.type === 1) {
+                // 文件夹使用默认图标
+                return {
+                    url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.10.0/icons/folder.svg',
+                    isIcon: true
+                };
+            }
+            
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(ext)) {
+                return {
+                    url: `${alistConfig.baseUrl}/d/Public${alistConfig.path}/${file.name}`,
+                    isIcon: false
+                };
+            }
+            
+            // 其他文件类型使用默认图标
+            return {
+                url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.10.0/icons/file.svg',
+                isIcon: true
+            };
+        }
+
+        // 加载文件列表
+        function loadFiles(page = 1) {
+            currentPage = page;
+            const container = document.getElementById('file-container');
+            container.innerHTML = '<div class="col-12 text-center"><div class="spinner-border" role="status"><span class="visually-hidden">加载中...</span></div></div>';
+            
+            const apiUrl = `${alistConfig.baseUrl}/api/fs/list`;
+            const requestData = {
+                path: alistConfig.path,
+                password: alistConfig.password,
+                page: page,
+                per_page: alistConfig.perPage,
+                refresh: false
+            };
+            
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code !== 200) {
+                    container.innerHTML = `<div class="col-12"><div class="alert alert-danger" role="alert">加载失败：${data.message}</div></div>`;
+                    return;
+                }
+                
+                if (data.data.content.length === 0) {
+                    container.innerHTML = '<div class="col-12"><div class="alert alert-info" role="alert">暂无活动影像</div></div>';
+                    return;
+                }
+                
+                container.innerHTML = '';
+                data.data.content.forEach(file => {
+                    const isFolder = file.type === 1;
+                    const fileUrl = isFolder ? '#' : getPreviewUrl(file);
+                    const thumbnailInfo = getThumbnailInfo(file);
+                    const imgClass = thumbnailInfo.isIcon ? 'file-type-icon' : 'img-fluid';
+                    const imgStyle = thumbnailInfo.isIcon ? '' : 'max-height: 100%; max-width: 100%; object-fit: contain;';
+                    
+                    const fileCard = document.createElement('div');
+                    fileCard.className = 'col';
+                    fileCard.innerHTML = `
+                        <div class="card h-100 file-card" ${isFolder ? 'onclick="loadSubfolder(\'' + file.name + '\')"' : 'onclick="window.open(\'' + fileUrl + '\', \'_blank\')"'}>
+                            <div class="card-img-top text-center bg-light" style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                                <img src="${thumbnailInfo.url}" class="${imgClass}" style="${imgStyle}" alt="${file.name}">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-truncate">${file.name}</h5>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        ${isFolder ? '文件夹' : formatFileSize(file.size)}<br>
+                                        ${formatDate(file.modified)}
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(fileCard);
+                });
+                
+                // 更新分页
+                updatePagination(data.data.total, page, alistConfig.perPage);
+                
+                // 移除加载提示
+                document.querySelector('.alert-info')?.remove();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                container.innerHTML = `<div class="col-12"><div class="alert alert-danger" role="alert">加载失败：${error.message}</div></div>`;
+            });
+        }
+
+        // 加载子文件夹
+        function loadSubfolder(folderName) {
+            alistConfig.path = `${alistConfig.path}/${folderName}`;
+            loadFiles(1);
+            
+            // 更新面包屑导航
+            updateBreadcrumb();
+        }
+
+        // 返回上级目录
+        function goToParentFolder() {
+            const pathParts = alistConfig.path.split('/').filter(p => p);
+            pathParts.pop();
+            alistConfig.path = '/' + pathParts.join('/');
+            loadFiles(1);
+            
+            // 更新面包屑导航
+            updateBreadcrumb();
+        }
+
+        // 更新面包屑导航
+        function updateBreadcrumb() {
+            const breadcrumbContainer = document.getElementById('breadcrumb');
+            if (!breadcrumbContainer) return;
+            
+            const pathParts = alistConfig.path.split('/').filter(p => p);
+            let html = '<li class="breadcrumb-item"><a href="#" onclick="resetPath(); return false;">根目录</a></li>';
+            
+            let currentPath = '';
+            pathParts.forEach((part, index) => {
+                currentPath += '/' + part;
+                if (index === pathParts.length - 1) {
+                    html += `<li class="breadcrumb-item active" aria-current="page">${part}</li>`;
+                } else {
+                    html += `<li class="breadcrumb-item"><a href="#" onclick="goToPath('${currentPath}'); return false;">${part}</a></li>`;
+                }
+            });
+            
+            breadcrumbContainer.innerHTML = html;
+        }
+
+        // 重置路径到根目录
+        function resetPath() {
+            alistConfig.path = '/VR';
+            loadFiles(1);
+            updateBreadcrumb();
+        }
+
+        // 跳转到指定路径
+        function goToPath(path) {
+            alistConfig.path = path;
+            loadFiles(1);
+            updateBreadcrumb();
+        }
+
+        // 更新分页
+        function updatePagination(total, currentPage, perPage) {
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(total / perPage);
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let html = '';
+            
+            // 上一页按钮
+            html += `
+                <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="loadFiles(${currentPage - 1}); return false;" aria-label="上一页">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            `;
+            
+            // 页码按钮
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage + 1 < maxVisiblePages) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+            
+            if (startPage > 1) {
+                html += `
+                    <li class="page-item">
+                        <a class="page-link" href="#" onclick="loadFiles(1); return false;">1</a>
+                    </li>
+                `;
+                
+                if (startPage > 2) {
+                    html += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                html += `
+                    <li class="page-item ${i === currentPage ? 'active' : ''}">
+                        <a class="page-link" href="#" onclick="loadFiles(${i}); return false;">${i}</a>
+                    </li>
+                `;
+            }
+            
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    html += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+                
+                html += `
+                    <li class="page-item">
+                        <a class="page-link" href="#" onclick="loadFiles(${totalPages}); return false;">${totalPages}</a>
+                    </li>
+                `;
+            }
+            
+            // 下一页按钮
+            html += `
+                <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="loadFiles(${currentPage + 1}); return false;" aria-label="下一页">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            `;
+            
+            pagination.innerHTML = html;
+        }
+
+        // 添加面包屑导航
+        function addBreadcrumb() {
+            const contentDiv = document.querySelector('.content.container');
+            const h2 = contentDiv.querySelector('h2');
+            
+            const breadcrumbNav = document.createElement('nav');
+            breadcrumbNav.setAttribute('aria-label', '面包屑导航');
+            breadcrumbNav.className = 'mb-4';
+            breadcrumbNav.innerHTML = `
+                <ol class="breadcrumb" id="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">活动影像</li>
+                </ol>
+            `;
+            
+            contentDiv.insertBefore(breadcrumbNav, h2.nextSibling);
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加Bootstrap图标
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css';
+            document.head.appendChild(link);
+            
+            // 添加面包屑导航
+            addBreadcrumb();
+            
+            // 加载文件列表
+            loadFiles();
+        });
+    </script>
+</body>
+</html>
