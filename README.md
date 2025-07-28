@@ -11,7 +11,7 @@ ECUSTVR俱乐部官方网站
 
 - **主仓库**：
   - GitHub: [https://github.com/ECUSTVR/ecustvr.github.io](https://github.com/ECUSTVR/ecustvr.github.io)
-  - CNB: [https://cnb.cool/ecustvr/ecustvr](https://cnb.cool/ecustvr/ecustvr)
+  - CNB: [https://cnb.cool/ecustvr/ecustvr-web](https://cnb.cool/ecustvr/ecustvr-web)
 
 - **同步机制**：
   - GitHub 与 CNB 仓库实现双向同步
