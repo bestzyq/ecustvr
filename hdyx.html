@@ -26,10 +26,10 @@
         }
 
         .logo-img {
-            max-width: 120px; /* 放大logo图片 */
+            max-width: 66px; /* 调整图片的最大宽度 */
             height: auto;
             vertical-align: middle; /* 垂直居中对齐，使图片与文字对齐 */
-            margin-right: 8px; /* 增加图片和文字之间的间距 */
+            margin-right: 0px; /* 可根据需要调整图片和文字之间的间距 */
         }
 
         .file-card {
@@ -139,37 +139,6 @@
         // 当前页码
         let currentPage = 1;
 
-        // 文件图标映射
-        const fileIcons = {
-            'image': 'bi bi-file-image',
-            'video': 'bi bi-file-play',
-            'audio': 'bi bi-file-music',
-            'pdf': 'bi bi-file-pdf',
-            'word': 'bi bi-file-word',
-            'excel': 'bi bi-file-excel',
-            'powerpoint': 'bi bi-file-ppt',
-            'archive': 'bi bi-file-zip',
-            'folder': 'bi bi-folder',
-            'default': 'bi bi-file'
-        };
-
-        // 获取文件类型图标
-        function getFileIcon(file) {
-            if (file.type === 1) return fileIcons.folder;
-            
-            const ext = file.name.split('.').pop().toLowerCase();
-            if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) return fileIcons.image;
-            if (['mp4', 'webm', 'mkv', 'avi', 'mov'].includes(ext)) return fileIcons.video;
-            if (['mp3', 'wav', 'ogg', 'flac'].includes(ext)) return fileIcons.audio;
-            if (ext === 'pdf') return fileIcons.pdf;
-            if (['doc', 'docx'].includes(ext)) return fileIcons.word;
-            if (['xls', 'xlsx'].includes(ext)) return fileIcons.excel;
-            if (['ppt', 'pptx'].includes(ext)) return fileIcons.powerpoint;
-            if (['zip', 'rar', '7z', 'tar', 'gz'].includes(ext)) return fileIcons.archive;
-            
-            return fileIcons.default;
-        }
-
         // 格式化文件大小
         function formatFileSize(bytes) {
             if (bytes === 0) return '0 B';
@@ -195,7 +164,7 @@
             if (file.type === 1) {
                 // 文件夹使用默认图标
                 return {
-                    url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.10.0/icons/folder.svg',
+                    url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/icons/folder.svg',
                     isIcon: true
                 };
             }
@@ -208,9 +177,53 @@
                 };
             }
             
+            // 根据文件类型返回相应的图标
+            if (['mp4', 'webm', 'mkv', 'avi', 'mov'].includes(ext)) {
+                return {
+                    url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/icons/file-play.svg',
+                    isIcon: true
+                };
+            }
+            if (['mp3', 'wav', 'ogg', 'flac'].includes(ext)) {
+                return {
+                    url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/icons/file-music.svg',
+                    isIcon: true
+                };
+            }
+            if (ext === 'pdf') {
+                return {
+                    url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/icons/file-pdf.svg',
+                    isIcon: true
+                };
+            }
+            if (['doc', 'docx'].includes(ext)) {
+                return {
+                    url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/icons/file-word.svg',
+                    isIcon: true
+                };
+            }
+            if (['xls', 'xlsx'].includes(ext)) {
+                return {
+                    url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/icons/file-excel.svg',
+                    isIcon: true
+                };
+            }
+            if (['ppt', 'pptx'].includes(ext)) {
+                return {
+                    url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/icons/file-ppt.svg',
+                    isIcon: true
+                };
+            }
+            if (['zip', 'rar', '7z', 'tar', 'gz'].includes(ext)) {
+                return {
+                    url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/icons/file-zip.svg',
+                    isIcon: true
+                };
+            }
+            
             // 其他文件类型使用默认图标
             return {
-                url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.10.0/icons/file.svg',
+                url: 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/icons/file.svg',
                 isIcon: true
             };
         }
@@ -441,7 +454,7 @@
             // 添加Bootstrap图标
             const link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css';
+            link.href = 'https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css';
             document.head.appendChild(link);
             
             // 添加面包屑导航
