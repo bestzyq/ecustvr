@@ -257,7 +257,7 @@
                     return;
                 }
                 
-                if (data.data.content.length === 0) {
+                if (data.data.content === null) {
                     container.innerHTML = '<div class="col-12"><div class="alert alert-info" role="alert">暂无活动影像</div></div>';
                     return;
                 }
