@@ -72,10 +72,8 @@
             position: relative;
         }
         .logo-img {
-            max-width: 66px; /* 调整图片的最大宽度 */
-            height: auto;
+            height: 20px;
             vertical-align: middle; /* 垂直居中对齐，使图片与文字对齐 */
-            margin-right: 0px; /* 可根据需要调整图片和文字之间的间距 */
         }
     </style>
 </head>
@@ -139,7 +137,7 @@
             // 只在www.ecustvr.top域名下显示备案号以及赞助信息
             if (hostname === 'www.ecustvr.top') {
                 footerContent += '<a class="nav-link" href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2023000758号-2</a> <a class="nav-link" target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31012102000135" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://beian.mps.gov.cn/img/ghs.png" style="float:left;"/>沪公网安备31012102000135号</p></a>';
-                footerContent += '<a class="nav-link" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">本网站由<img src="/img/upyun.png" alt="又拍云" class="logo-img img-fluid">提供CDN加速/云储存服务</a>';
+                footerContent += '<a class="nav-link" href="https://edgeone.ai/zh?from=github" target="_blank">本站CDN加速及安全防护由 <img src="https://edgeone.ai/media/34fe3a45-492d-4ea4-ae5d-ea1087ca7b4b.png" alt="亚洲最佳CDN、边缘和安全解决方案 - Tencent EdgeOne" class="logo-img img-fluid"> 赞助</a>';
             }
             
             document.write(footerContent);
