@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>网址导航</title>
     <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
-    <base target="_blank">
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -105,7 +105,7 @@
                         <a class="nav-link" href="hdyx.html">活动影像</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzIzMDU3NzQ1MQ==&scene=1&album_id=2927847544494440450&count=3#wechat_redirect">使用攻略</a>
+                        <a class="nav-link" target="_blank" href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzIzMDU3NzQ1MQ==&scene=1&album_id=2927847544494440450&count=3#wechat_redirect">使用攻略</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="dh.html">网址导航</a>
@@ -114,10 +114,10 @@
                         <a class="nav-link" href="qq-groups.html">交流群汇总</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://wiki.ecustvr.top/">Wiki</a>
+                        <a class="nav-link" target="_blank" href="https://wiki.ecustvr.top/">Wiki</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://git.ecustvr.top/">Git</a>
+                        <a class="nav-link" target="_blank" href="http://git.ecustvr.top/">Git</a>
                     </li>
                 </ul>
             </div>
@@ -222,6 +222,11 @@
         </script>
     </footer>
     <script>
+        // 为.link-item中的链接动态添加target="_blank"
+        document.querySelectorAll('.link-item a').forEach(link => {
+            link.setAttribute('target', '_blank');
+        });
+
         const linkList = document.querySelector('.link-list');
         const linkItems = Array.from(linkList.querySelectorAll('.link-item'));
 
