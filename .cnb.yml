@@ -26,4 +26,4 @@ master:
       stages:
         - name: Deploy to EdgeOne Pages
           image: tencentcom/deploy-eopages:latest
-          script: edgeone pages deploy ./public -n ecustvr -t $EDGEONE_API_TOKEN
+          script: edgeone pages deploy ./ -n ecustvr -t $EDGEONE_API_TOKEN
