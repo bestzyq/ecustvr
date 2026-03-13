@@ -1,128 +1,130 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>华东理工大学VR俱乐部</title>
     <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .content {
-            flex: 1;
-            padding-bottom: 60px; /* 为页脚腾出空间 */
-        }
-
-        footer {
-            background-color: #b81414;
-            color: #fff;
-            text-align: center;
-            padding: 15px 0;
-            position: relative;
-        }
-        .logo-img {
-            height: 20px;
-            vertical-align: middle; /* 垂直居中对齐，使图片与文字对齐 */
-        }
-    </style>
+    <link rel="stylesheet" href="css/brutal.css">
+    <link rel="stylesheet" href="css/decorations.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #b81414;">
-        <div class="container">
-            <a class="navbar-brand" href="/">VR俱乐部</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">社团简介</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="history.html">发展历程</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cgzs.html">成果展示</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="hdyx.html">活动影像</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzIzMDU3NzQ1MQ==&scene=1&album_id=2927847544494440450&count=3#wechat_redirect">使用攻略</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dh.html">网址导航</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="qq-groups.html">交流群汇总</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://wiki.ecustvr.top/">Wiki</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="http://git.ecustvr.top/">Git</a>
-                    </li>
-                </ul>
+    <div class="nb-landing">
+        <nav class="nb-nav">
+            <a class="navbar-brand" href="index.html">VR 俱乐部</a>
+            <div class="d-flex flex-wrap gap-2">
+                <a class="nav-link" href="about.html">社团简介</a>
+                <a class="nav-link" href="history.html">发展历程</a>
+                <a class="nav-link" href="cgzs.html">成果展示</a>
+                <a class="nav-link" href="hdyx.html">活动影像</a>
+                <a class="nav-link" href="notice.html">使用攻略</a>
+                <a class="nav-link" href="dh.html">网址导航</a>
+                <a class="nav-link" href="qq-groups.html">交流群汇总</a>
+                <a class="nav-link" target="_blank" href="https://wiki.ecustvr.top/">Wiki</a>
+                <a class="nav-link" target="_blank" href="http://git.ecustvr.top/">Git</a>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- 轮播 -->
-    <div id="demo" class="carousel slide" data-bs-ride="carousel">
-    
-        <!-- 指示符 -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-        </div>
-        
-        <!-- 轮播图片 -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <a target="_blank" href="https://qm.qq.com/q/fnVh1usmPK"><img decoding="async" src="img/cover1.png" class="d-block" style="width:100%"></a>
+        <header class="nb-hero">
+            <div class="nb-sticker sticker-1">⚡</div>
+            
+            <div class="nb-hero-content">
+                <span class="nb-chip nb-chip-blue" style="margin-bottom: 2rem; width: fit-content;">NEW: 2026 RECRUITMENT</span>
+                
+                <h1>MAKE IT <br><span style="color: var(--primary); -webkit-text-stroke: 2px var(--ink); background: transparent; border: none; box-shadow: none; transform: none; padding: 0;">VIRTUAL</span> & BOLD</h1>
+                
+                <p>我们是创意制作人、硬件玩家、技术分享者。用虚拟现实把奇思妙想变成可触碰的体验，拒绝平庸，打破常规。</p>
+                
+                <div class="d-flex flex-wrap gap-4">
+                    <a class="nb-btn primary" target="_blank" href="https://qm.qq.com/q/fnVh1usmPK">JOIN THE CLUB →</a>
+                    <a class="nb-btn secondary" href="cgzs.html">OUR PROJECTS</a>
+                </div>
             </div>
-            <div class="carousel-item">
-            <a target="_blank" href="https://qm.qq.com/q/fnVh1usmPK"><img decoding="async" src="img/cover2.png" class="d-block" style="width:100%"></a>
+            
+            <div class="nb-hero-video">
+                <video autoplay muted loop playsinline id="hero-video">
+                    <source src="img/VR社宣传视频.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="nb-sticker sticker-2">★</div>
+        </header>
+
+        <div class="nb-marquee">
+            <div class="nb-marquee-content">
+                VR CLUB ★ CREATIVE ★ TECHNOLOGY ★ UNITY ★ UNREAL ★ WEBXR ★ INTERACTIVE ★ DESIGN ★ HARDWARE ★ VR CLUB ★ CREATIVE ★ TECHNOLOGY ★ UNITY ★ UNREAL ★ WEBXR ★ INTERACTIVE ★ DESIGN ★ HARDWARE ★
             </div>
         </div>
-        
-        <!-- 左右切换按钮 -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
     </div>
 
-    <div class="content container py-5">
-        <h2 class="mb-4">公告</h2>
-        <p>欢迎来到VR俱乐部的官方网站！在这里，你将有机会探索虚拟现实世界的奇妙之处。</p>
-        <p><a target="_blank" href="https://qm.qq.com/q/fnVh1usmPK">加入我们</a>，一起开启数字世界的冒险吧！</p>
-    </div>
-    
-    <footer>
-        <script type="text/javascript">
-            var currentYear = new Date().getFullYear();
-            var hostname = window.location.hostname;
-            var footerContent = '&copy; ' + currentYear + ' VR俱乐部 ';
-            
-            // 只在www.ecustvr.top域名下显示备案号以及赞助信息
-            if (hostname === 'www.ecustvr.top') {
-                footerContent += '<a class="nav-link" href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2023000758号-2</a> <a class="nav-link" target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31012102000135" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://beian.mps.gov.cn/img/ghs.png" style="float:left;"/>沪公网安备31012102000135号</p></a>';
-                footerContent += '<a class="nav-link" href="https://cloud.tencent.com/product/teo" target="_blank">本站CDN加速及安全防护由 腾讯云EdgeOne 赞助</a>';
-            }
-            
-            document.write(footerContent);
-        </script>
-    </footer>
+    <div class="nb-shell">
+        <section class="nb-section">
+            <span class="nb-title">CLUB STATUS</span>
+            <div class="nb-grid">
+                <div class="nb-card">
+                    <div class="nb-chip nb-chip-pink">MEMBERS</div>
+                    <h2>120+</h2>
+                    <p>创作者、设计师、硬件党正在活跃，共同构建校园元宇宙。</p>
+                </div>
+                <div class="nb-card">
+                    <div class="nb-chip nb-chip-yellow">DEVICES</div>
+                    <h2>50n UNITS</h2>
+                    <p>PICO / Quest / SteamVR 全阵列设备，支持各类开发实验。</p>
+                </div>
+                <div class="nb-card">
+                    <div class="nb-chip nb-chip-blue">PROJECTS</div>
+                    <h2>32+</h2>
+                    <p>从校史馆导览到科普交互，每一行代码都在创造新次元。</p>
+                </div>
+            </div>
+        </section>
 
+        <section class="nb-section">
+            <span class="nb-title">HIGHLIGHTS</span>
+            <div class="nb-grid">
+                <div class="nb-card">
+                    <div class="nb-chip nb-chip-yellow">EXPERIENCE</div>
+                    <h3>校史馆 VR 2.0</h3>
+                    <p>新增互动讲解点与音频导览，打破时空限制，云端回溯华理历史。</p>
+                    <a class="nb-btn secondary mt-3" target="_blank" href="https://www.720yun.com/t/b0vksq1bpqw?scene_id=48714823">GO →</a>
+                </div>
+                <div class="nb-card">
+                    <div class="nb-chip nb-chip-pink">CREATIVE</div>
+                    <h3>张江数链挑战赛</h3>
+                    <p>结合 AI 生成技术，探索元宇宙内容的无限可能，荣获多项创意奖项。</p>
+                    <a class="nb-btn primary mt-3" target="_blank" href="https://news.qq.com/rain/a/20241129A083DP00">VIEW →</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="nb-foot" id="footer"></footer>
+    </div>
+
+
+    <script>
+        // 动态生成页脚内容的脚本
+        // 功能说明：
+        // 1. 获取当前年份用于版权声明
+        // 2. 检测当前域名是否为正式域名（www.ecustvr.top）
+        // 3. 如果是正式域名，则在页脚追加备案号、公安备案号和CDN服务商信息
+        // 4. 将生成的页脚内容插入到id为'footer'的DOM元素中
+
+        const year = new Date().getFullYear();
+        const host = window.location.hostname;
+        let footerContent = `© ${year} ECUST VR Club · Made on campus`;
+        if (host === 'www.ecustvr.top') {
+            footerContent += ` · <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2023000758号-2</a> · <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31012102000135" target="_blank">沪公网安备31012102000135号</a> · <a href="https://cloud.tencent.com/product/teo" target="_blank">CDN by Tencent EdgeOne</a>`;
+        }
+        document.getElementById('footer').innerHTML = footerContent;
+
+        // 设置宣传视频播放速度
+        document.getElementById('hero-video').playbackRate = 0.5;
+    </script>
+
+
+    <!-- Popper.js: Bootstrap 下拉菜单、工具提示等组件的定位引擎 -->
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <!-- Bootstrap JavaScript: 提供响应式导航栏折叠等交互功能 -->
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
 </body>
 </html>

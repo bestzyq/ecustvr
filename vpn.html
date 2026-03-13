@@ -3,147 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网址转换</title>
-    <script>
-        function convertUrl() {
-            var inputUrl = document.getElementById("inputUrl").value.trim(); // 移除前后空格
-            var convertedUrl = "https://"; // 默认以https开头
-            var isHttps = false; // 标记是否是https
-            var isPort = false; // 标记是否存在端口号
-
-            // 检查是否存在端口号
-            if (inputUrl.match(/:\d+\//)) {
-                isPort = true;
-            }
-
-            if (inputUrl === "") {
-                convertedUrl += "请输入有效的URL";
-            } else {
-                var match = inputUrl.match(/^(https?:\/\/)?([^\/]+)(\/.*)?$/);
-                if (match) {
-                    isHttps = match[1] === "https://"; // 判断是否是https
-                    var domain = match[2].replace(/[.:\/]/g, "-");
-                    var path = match[3] || "/";
-                    
-                    // 处理端口号
-                    if (!isHttps && inputUrl.match(/:\d+\//)) {
-                        var port = inputUrl.match(/:(\d+)\//)[1];
-                        path = path.replace(":" + port + "/", "-" + port + "-p");
-                    }
-
-                    convertedUrl += domain + (isPort ? "-p" : "") + (isHttps ? "-s" : "") + ".sslvpn.ecust.edu.cn:8118" + path;
-                } else {
-                    convertedUrl += "请输入有效的URL";
-                }
-            }
-            
-            // 获取显示结果的元素
-            var convertedUrlElement = document.getElementById("convertedUrl");
-            
-            // 创建超链接元素
-            var linkElement = document.createElement("a");
-            linkElement.href = convertedUrl;
-            linkElement.textContent = convertedUrl;
-            
-            // 清空显示结果的元素，并添加超链接元素
-            convertedUrlElement.innerHTML = "";
-            convertedUrlElement.appendChild(linkElement);
-        }
-    </script>
+    <title>VPN 链接转换器</title>
     <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .content {
-            flex: 1;
-            padding-bottom: 60px; /* 为页脚腾出空间 */
-        }
-
-        footer {
-            background-color: #b81414;
-            color: #fff;
-            text-align: center;
-            padding: 15px 0;
-            position: relative;
-        }
-        .logo-img {
-            height: 20px;
-            vertical-align: middle; /* 垂直居中对齐，使图片与文字对齐 */
-        }
-    </style>
+    <link rel="stylesheet" href="css/brutal.css">
+    <link rel="stylesheet" href="css/decorations.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #b81414;">
-        <div class="container">
-            <a class="navbar-brand" href="/">VR俱乐部</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">社团简介</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="history.html">发展历程</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cgzs.html">成果展示</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="hdyx.html">活动影像</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzIzMDU3NzQ1MQ==&scene=1&album_id=2927847544494440450&count=3#wechat_redirect">使用攻略</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dh.html">网址导航</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="qq-groups.html">交流群汇总</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://wiki.ecustvr.top/">Wiki</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="http://git.ecustvr.top/">Git</a>
-                    </li>
-                </ul>
+    <div class="container nb-shell">
+        <nav class="navbar navbar-expand-lg navbar-light nb-nav">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">VR Club</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="切换导航">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto gap-1">
+                        <li class="nav-item"><a class="nav-link" href="index.html">首页</a></li>
+                        <li class="nav-item"><a class="nav-link" href="dh.html">网址导航</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="vpn.html">VPN 链接转换</a></li>
+                        <li class="nav-item"><a class="nav-link" href="qq-groups.html">交流群</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    
-    <div class="content container py-5">
-        <h2>华理VPN链接转换工具</h2>
-        <label for="inputUrl">输入原始网址（请输入以http://或者https://开头的网址。如有端口号，必须端口号后面有/，如':8118/'）：</label>
-        <input type="text" id="inputUrl" placeholder="http://www.baidu.com">
-        <button onclick="convertUrl()">转换</button>
-        <p>转换后的网址：</p>
-        <p id="convertedUrl"></p>
-        <p>特别说明，您的统一身份认证账号密码信息不经过本网站，本站仅提供链接转换服务。如您遗忘统一身份认证账号密码，请咨询信息办</p>
-    </div>
-    
-    <footer>
-        <script type="text/javascript">
-            var currentYear = new Date().getFullYear();
-            var hostname = window.location.hostname;
-            var footerContent = '&copy; ' + currentYear + ' VR俱乐部 ';
-            
-            // 只在www.ecustvr.top域名下显示备案号以及赞助信息
-            if (hostname === 'www.ecustvr.top') {
-                footerContent += '<a class="nav-link" href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2023000758号-2</a> <a class="nav-link" target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31012102000135" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://beian.mps.gov.cn/img/ghs.png" style="float:left;"/>沪公网安备31012102000135号</p></a>';
-                footerContent += '<a class="nav-link" href="https://cloud.tencent.com/product/teo" target="_blank">本站CDN加速及安全防护由 腾讯云EdgeOne 赞助</a>';
-            }
-            
-            document.write(footerContent);
-        </script>
-    </footer>
+        </nav>
 
+        <div class="nb-hero mb-4">
+            <div class="nb-sticker-tag teal nb-wiggle" style="position: absolute; top: 0; right: 20px;">TOOL</div>
+            <div class="position-relative" style="z-index:2;">
+                <span class="nb-badge">SSLVPN Helper</span>
+                <h1>华理 VPN 链接转换器</h1>
+                <p>把任意 http/https 链接转换成 SSLVPN 形式，方便在校外访问内网资源。支持带端口的地址。</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <span class="nb-pill">HTTPS 自动追加 -s</span>
+                    <span class="nb-pill">端口自动标记 -p</span>
+                </div>
+            </div>
+            <div class="nb-sticker">工具</div>
+        </div>
+
+        <div class="nb-section">
+            <span class="nb-title">输入原始地址</span>
+            <div class="nb-form-card mt-3">
+                <label for="inputUrl" class="form-label fw-bold">示例： http://172.20.7.152/jsxsd/ 或 https://pan.ecust.edu.cn/</label>
+                <input type="text" id="inputUrl" class="nb-input" placeholder="http://example.com:8118/" />
+                <div class="d-flex gap-3 mt-3 flex-wrap">
+                    <button class="nb-btn primary" onclick="convertUrl()">转换</button>
+                    <button class="nb-btn secondary" onclick="copyResult()">复制结果</button>
+                </div>
+                <div class="nb-divider"></div>
+                <p class="fw-bold mb-1">转换结果：</p>
+                <p id="convertedUrl" class="mb-0 nb-ghost"></p>
+            </div>
+            <p class="mt-3 mb-0"><strong>说明：</strong>工具只负责生成 URL，不会保存账号密码；请在 VPN 登录页输入统一身份认证信息。</p>
+        </div>
+
+        <div class="nb-foot" id="footer"></div>
+    </div>
+
+    <script>
+        function convertUrl() {
+            const inputUrl = document.getElementById("inputUrl").value.trim();
+            let convertedUrl = "https://";
+            if (!inputUrl) {
+                convertedUrl = "请输入有效的 URL";
+            } else {
+                const match = inputUrl.match(/^(https?:\/\/)?([^\/]+)(\/.*)?$/);
+                if (match) {
+                    const isHttps = match[1] === "https://";
+                    const domain = match[2].replace(/[.:\/]/g, "-");
+                    let path = match[3] || "/";
+                    const portMatch = inputUrl.match(/:(\d+)\//);
+                    const hasPort = !!portMatch;
+                    if (!isHttps && hasPort) {
+                        const port = portMatch[1];
+                        path = path.replace(":" + port + "/", "-" + port + "-p");
+                    }
+                    convertedUrl += domain + (hasPort ? "-p" : "") + (isHttps ? "-s" : "") + ".sslvpn.ecust.edu.cn:8118" + path;
+                } else {
+                    convertedUrl = "请输入有效的 URL";
+                }
+            }
+            const el = document.getElementById("convertedUrl");
+            el.innerHTML = `<a href="${convertedUrl}" target="_blank">${convertedUrl}</a>`;
+        }
+
+        function copyResult() {
+            const text = document.getElementById("convertedUrl").innerText;
+            if (text) navigator.clipboard.writeText(text);
+        }
+
+        const year = new Date().getFullYear();
+        const host = window.location.hostname;
+        let footerContent = `© ${year} ECUST VR Club · VPN Helper`;
+        if (host === 'www.ecustvr.top') {
+            footerContent += ` · <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2023000758号-2</a> · <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31012102000135" target="_blank">沪公网安备31012102000135号</a> · <a href="https://cloud.tencent.com/product/teo" target="_blank">CDN by Tencent EdgeOne</a>`;
+        }
+        document.getElementById('footer').innerHTML = footerContent;
+    </script>
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
 </body>

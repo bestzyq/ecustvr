@@ -1,0 +1,67 @@
+﻿# ECUSTVR 项目阐述（入门指南）
+
+## 1. 项目定位
+本项目是 ECUST VR 俱乐部的静态官网仓库，面向校内外成员提供社团介绍、发展历程、成果展示、活动影像聚合、网址导航与交流群入口等内容。站点以信息展示为主，强调快速访问与低运维成本。
+
+## 2. 技术栈与运行方式
+- 纯静态：HTML + CSS + 原生 JavaScript，无构建与打包流程。
+- UI 组件：Bootstrap 5.2.3（CDN 方式引入），部分页面引入 Bootstrap Icons。
+- 外部依赖：CDN 采用南科大镜像站（mirrors.sustech.edu.cn），活动影像页依赖 AList API。
+- 本地预览：直接用浏览器打开 `index.html` 即可；若需完整相对路径行为，建议用本地静态服务器（如 `python -m http.server`）。
+
+## 3. 目录结构（关键文件）
+- `index.html`：主页，含轮播与公告区。
+- `about.html`：社团简介页面。
+- `history.html`：发展历程页面。
+- `cgzs.html`：成果展示（含 VR 全景链接与展示图）。
+- `hdyx.html`：活动影像（AList 文件列表 + 分页 + 面包屑）。
+- `dh.html`：网址导航（链接聚合 + 搜索 + A-Z 分类）。
+- `qq-groups.html`：交流群入口汇总。
+- `notice.html`：通知/公告页面。
+- `vpn.html`：VPN 相关工具/说明页面。
+- `403.html`：错误页。
+- `img/`：站点图片资源（封面、二维码、Logo 等）。
+- `TarotImg/`：扩展素材图片集（如有相关页面可复用）。
+- `.github/workflows/sync.yml`：GitHub -> CNB 的同步流程。
+- `.cnb.yml`：CNB -> GitHub/Gitee 同步 + EdgeOne Pages 部署。
+- `LICENSE`：开源许可文件。
+
+## 4. 页面功能要点
+### 4.1 主页（`index.html`）
+- 轮播图来自 `img/cover*.png`。
+- 公告区用于快速通知与引导（例如入群链接）。
+- 页脚脚本根据域名判断是否展示备案与赞助信息（仅在 `www.ecustvr.top` 展示）。
+
+### 4.2 成果展示（`cgzs.html`）
+- 展示 VR 全景作品外链（如 720yun）。
+- 展示图来自 `img/gzh*.png` 与 `img/xsg*.png`。
+
+### 4.3 活动影像（`hdyx.html`）
+- 通过 AList API 拉取文件列表并渲染卡片。
+- 关键配置区：
+  - `baseUrl`：AList 服务地址。
+  - `path`：活动影像目录（默认 `/VR`）。
+  - `password`：若目录加密需填写。
+  - `perPage`：分页数量。
+- 如果内容为空或接口失败，会显示提示信息；建议在更新 AList 目录后刷新页面验证。
+
+### 4.4 网址导航（`dh.html`）
+- 通过 JS 自动按首字母分类，并提供搜索过滤。
+- 新增链接时只需添加 `<li class="link-item">`，页面会自动归类。
+- 脚本会统一为链接加 `target="_blank"`。
+
+## 5. 更新与维护流程
+- 修改页面内容：直接编辑对应 `.html` 文件即可，无需构建步骤。
+- 新增导航入口：需要在各页面的 Navbar 中同步更新（导航是复制粘贴式结构，不是组件化）。
+- 更新图片资源：把图片放入 `img/`，并更新对应页面引用。
+- 更新活动影像：在 AList 服务器侧更新资源，必要时同步调整 `hdyx.html` 中的 AList 配置。
+
+## 6. 同步与部署（现有机制）
+- GitHub：`sync.yml` 监听 push，使用 `tencentcom/git-sync` 同步到 CNB 仓库。
+- CNB：`.cnb.yml` 将代码同步至 GitHub 与 Gitee，并自动部署到 Tencent EdgeOne Pages。
+- 建议遵循团队约定选择单一“主仓库”提交，避免多平台同时修改导致冲突。
+
+## 7. 注意事项
+- CDN 与 AList 属外部依赖，网络波动可能导致样式或内容加载异常。
+- 页脚备案信息仅在生产域名展示，本地预览不显示属正常现象。
+- 请保持文件 UTF-8 编码，避免中文乱码与页面解析异常。
