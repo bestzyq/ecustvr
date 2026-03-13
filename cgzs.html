@@ -12,7 +12,7 @@
     <nav class="nb-nav">
         <a class="navbar-brand" href="index.html">VR 俱乐部</a>
         <div class="d-flex flex-wrap gap-2">
-            <a class="nav-link" href="about.html">社团简介</a>
+            <a class="nav-link d-none" href="about.html">社团简介</a>
             <a class="nav-link" href="history.html">发展历程</a>
             <a class="nav-link active" href="cgzs.html">成果展示</a>
             <a class="nav-link" href="hdyx.html">活动影像</a>
@@ -38,67 +38,88 @@
         <div class="nb-section">
             <div class="nb-cross" style="position: absolute; right: 30px; top: 10px;"></div>
             <span class="nb-title">精选案例</span>
-            <div class="nb-grid">
-                <div class="nb-card">
-                    <div class="nb-chip nb-chip-pink">VR 全景</div>
-                    <h4 class="mt-3">顾正红纪念馆 VR 全景</h4>
-                    <p>沉浸式展陈，覆盖场景导览、讲解脚本与交互热点。</p>
-                    <div class="nb-tag-rail mb-2">
-                        <span class="nb-chip nb-chip-yellow">720yun</span>
-                        <span class="nb-chip nb-chip-blue">文博</span>
-                    </div>
-                    <a class="nb-btn primary" target="_blank" href="https://www.720yun.com/t/c1vksh8lzrm?scene_id=49505715">立即体验</a>
-                    <div class="nb-divider"></div>
-                    <div class="nb-grid">
-                        <img src="img/gzh1.png" alt="顾正红纪念馆封面" class="nb-img">
-                        <img src="img/gzh2.png" alt="纪念馆场景 2" class="nb-img">
-                        <img src="img/gzh3.png" alt="纪念馆场景 3" class="nb-img">
-                    </div>
+            <div class="nb-showcase-layout">
+                <div class="nb-featured-photo-grid">
+                    <article class="nb-card nb-photo-project">
+                        <div class="nb-photo-project-copy">
+                            <div class="nb-chip nb-chip-pink">VR 全景</div>
+                            <h4 class="mt-3">顾正红纪念馆 VR 全景</h4>
+                            <p>沉浸式展陈，覆盖场景导览、讲解脚本与交互热点。</p>
+                            <div class="nb-tag-rail mb-2">
+                                <span class="nb-chip nb-chip-yellow">720yun</span>
+                                <span class="nb-chip nb-chip-blue">文博</span>
+                            </div>
+                            <a class="nb-btn primary" target="_blank" href="https://www.720yun.com/t/c1vksh8lzrm?scene_id=49505715">立即体验</a>
+                        </div>
+                        <div class="nb-photo-project-qr">
+                            <img src="img/gzh1.png" alt="顾正红纪念馆封面" class="nb-img nb-photo-shot nb-photo-shot-cover">
+                        </div>
+                        <div class="nb-photo-gallery nb-photo-gallery-triple">
+                            <img src="img/gzh2.png" alt="纪念馆场景 2" class="nb-img nb-photo-shot nb-photo-shot-wide">
+                            <img src="img/gzh3.png" alt="纪念馆场景 3" class="nb-img nb-photo-shot nb-photo-shot-wide">
+                        </div>
+                    </article>
+
+                    <article class="nb-card nb-photo-project">
+                        <div class="nb-photo-project-copy">
+                            <div class="nb-chip nb-chip-blue">VR 全景</div>
+                            <h4 class="mt-3">校史馆 VR 导览</h4>
+                            <p>校史故事 x 空间导览，兼容移动端和头显浏览。</p>
+                            <div class="nb-tag-rail mb-2">
+                                <span class="nb-chip nb-chip-green">校园</span>
+                                <span class="nb-chip nb-chip-yellow">文化</span>
+                            </div>
+                            <a class="nb-btn primary" target="_blank" href="https://www.720yun.com/t/b0vksq1bpqw?scene_id=48714823">在线体验</a>
+                        </div>
+                        <div class="nb-photo-project-qr">
+                            <img src="img/xsg1.png" alt="校史馆场景 1" class="nb-img nb-photo-shot nb-photo-shot-cover">
+                        </div>
+                        <div class="nb-photo-gallery nb-photo-gallery-double">
+                            <img src="img/xsg2.png" alt="校史馆场景 2" class="nb-img nb-photo-shot nb-photo-shot-wide">
+                        </div>
+                    </article>
                 </div>
 
-                <div class="nb-card">
-                    <div class="nb-chip nb-chip-blue">VR 全景</div>
-                    <h4 class="mt-3">校史馆 VR 导览</h4>
-                    <p>校史故事 x 空间导览，兼容移动端和头显浏览。</p>
-                    <div class="nb-tag-rail mb-2">
-                        <span class="nb-chip nb-chip-green">校园</span>
-                        <span class="nb-chip nb-chip-yellow">文化</span>
-                    </div>
-                    <a class="nb-btn primary" target="_blank" href="https://www.720yun.com/t/b0vksq1bpqw?scene_id=48714823">在线体验</a>
-                    <div class="nb-divider"></div>
-                    <div class="nb-grid">
-                        <img src="img/xsg1.png" alt="校史馆场景 1" class="nb-img">
-                        <img src="img/xsg2.png" alt="校史馆场景 2" class="nb-img">
-                    </div>
-                </div>
+                <div class="nb-compact-project-row">
+                    <article class="nb-card nb-compact-project-card">
+                        <div class="nb-chip nb-chip-green">体验夜</div>
+                        <h4 class="mt-3">Weekly VR Night</h4>
+                        <p>每周一次的自由体验与新 Demo 测试，收集用户反馈并迭代。</p>
+                        <div class="nb-tag-rail mb-2">
+                            <span class="nb-chip nb-chip-yellow">用户测试</span>
+                            <span class="nb-chip nb-chip-blue">社区</span>
+                        </div>
+                        <a class="nb-btn secondary" href="https://qm.qq.com/q/fnVh1usmPK" target="_blank">在群内报名</a>
+                    </article>
 
-                <div class="nb-card">
-                    <div class="nb-chip nb-chip-yellow">AR</div>
-                    <h4 class="mt-3">AR 录取通知书</h4>
-                    <p>通过手机即可唤起 3D 校园与迎新信息，新生在收到录取通知书的第一刻就能感受校园。</p>
-                    <div class="nb-tag-rail mb-2">
-                        <span class="nb-chip nb-chip-blue">入学</span>
-                        <span class="nb-chip nb-chip-pink">交互叙事</span>
-                    </div>
-                    <span class="nb-pill">线下体验</span>
-                </div>
+                    <article class="nb-card nb-compact-project-card">
+                        <div class="nb-chip nb-chip-yellow">AR</div>
+                        <h4 class="mt-3">AR 录取通知书</h4>
+                        <p>通过手机即可唤起 3D 校园与迎新信息，新生在收到录取通知书的第一刻就能感受校园。</p>
+                        <div class="nb-tag-rail mb-2">
+                            <span class="nb-chip nb-chip-blue">入学</span>
+                            <span class="nb-chip nb-chip-pink">交互叙事</span>
+                        </div>
+                        <span class="nb-pill">线下体验</span>
+                    </article>
 
-                <div class="nb-card">
-                    <div class="nb-chip nb-chip-green">体验夜</div>
-                    <h4 class="mt-3">Weekly VR Night</h4>
-                    <p>每周一次的自由体验与新 Demo 测试，收集用户反馈并迭代。</p>
-                    <div class="nb-tag-rail mb-2">
-                        <span class="nb-chip nb-chip-yellow">用户测试</span>
-                        <span class="nb-chip nb-chip-blue">社区</span>
-                    </div>
-                    <a class="nb-btn secondary" href="https://qm.qq.com/q/fnVh1usmPK" target="_blank">在群内报名</a>
+                    <article class="nb-card nb-compact-project-card">
+                        <div class="nb-chip nb-chip-pink">创意</div>
+                        <h4 class="mt-3">张江数链挑战赛</h4>
+                        <p>结合 AI 生成技术，探索元宇宙内容的无限可能。</p>
+                        <div class="nb-tag-rail mb-2">
+                            <span class="nb-chip nb-chip-yellow">一黑钻奖</span>
+                            <span class="nb-chip nb-chip-blue">二铂金奖</span>
+                        </div>
+                        <span class="nb-pill">荣获多项创意奖项</span>
+                    </article>
                 </div>
             </div>
         </div>
 
         <div class="nb-section">
             <span class="nb-title">想合作？</span>
-            <div class="nb-grid">
+            <div class="nb-grid nb-grid-equal-height">
                 <div class="nb-card nb-rotate">
                     <h4>联合策展</h4>
                     <p>校园/博物馆/品牌主题活动，提供空间设计与交互制作。</p>
