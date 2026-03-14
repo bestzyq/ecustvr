@@ -12,6 +12,7 @@ master:
             auth_type: https
             username: ${GITHUB_USERNAME}
             password: ${GITHUB_ACCESS_TOKEN}
+            force: true
         - name: sync to gitee
           image: tencentcom/git-sync
           settings:
@@ -19,6 +20,7 @@ master:
             auth_type: https
             username: ${GITEE_USERNAME}
             password: ${GITEE_ACCESS_TOKEN}
+            force: true
     - name: edgeone
       runner:
         cpus: 1
